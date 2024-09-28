@@ -1,8 +1,10 @@
 from flask import Flask,render_template,request
 import google.generativeai as genai
+import os
 
 model = genai.GenerativeModel("gemini-1.5-flash")
-genai.configure(api_key="AIzaSyBMIALAokYZVar_BDLBzOxmCzbVkfz3crY")
+api = os.getenv("MAKERSUITE")
+genai.configure(api_key=api)
 
 app = Flask(__name__)
 
@@ -37,4 +39,3 @@ def q2():
 
 if __name__ == "__main__":
     app.run()
-    
